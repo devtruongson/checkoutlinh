@@ -1,0 +1,46 @@
+.shop_now_wp_top {
+    display        : flex;
+    justify-content: space-between;
+    margin-bottom  : 20px;
+    margin-top     : 10px;
+
+    .shop_now_item {
+        display        : flex;
+        flex-wrap      : wrap;
+        width          : 48%;
+        justify-content: space-between;
+
+        .product_item {
+            width: 49%;
+
+            .img_product {
+                height: 350px;
+            }
+        }
+
+        &.__shop_now_landing {
+            background-color: var(--color_product_img);
+            display         : flex;
+            justify-content : center;
+            align-items     : center;
+            position        : relative;
+
+            img {
+                height    : 52px;
+                object-fit: contain;
+            }
+
+            button {
+                position        : absolute;
+                bottom          : 20px;
+                left            : 50%;
+                transform       : translateX(-50%);
+                background-color: #fff;
+                padding         : 10px 20px;
+                border          : 1px solid #333;
+                font-weight     : 600;
+                font-size       : 15px;
+            }
+        }
+    }
+}
