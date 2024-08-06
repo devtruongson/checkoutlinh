@@ -90,3 +90,29 @@ footer {
         }
     }
 }
+
+@media (max-width: 575.98px) {
+    footer {
+        .footer_top_wrapper {
+            flex-wrap: wrap;
+
+            .footer_item {
+                width        : 50%;
+                max-width    : 50%;
+                margin-bottom: 20px;
+                flex         : 1;
+
+                .input_sub {
+                    input {
+                        min-width: unset !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .copy_right {
+        font-size: 12px;
+        padding  : 0 10px;
+    }
+}

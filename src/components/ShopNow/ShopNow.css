@@ -44,3 +44,23 @@
         }
     }
 }
+
+@media (max-width: 575.98px) {
+    .shop_now_wp_top {
+        flex-direction: column;
+
+        .__shop_now_landing {
+            height       : 220px;
+            margin-bottom: 20px;
+            flex-shrink  : 0;
+        }
+
+        .shop_now_item {
+            width: 100%;
+        }
+
+        .price_wrap {
+            font-size: 9px;
+        }
+    }
+}

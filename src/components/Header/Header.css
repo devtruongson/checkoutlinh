@@ -120,3 +120,98 @@
         font-weight     : 600;
     }
 }
+
+.header_mobile {
+    display: none;
+}
+
+.render_header_mobile {
+    display: none;
+
+    &.active {
+        position        : fixed;
+        display         : block;
+        z-index         : 9999;
+        left            : 0;
+        right           : 0;
+        background-color: #fff;
+        padding         : 20px 20px;
+    }
+
+    .right-header-nav--item {
+        display    : flex;
+        align-items: center;
+        gap        : 10px;
+        position   : relative;
+
+        &.search-wrapper-header-input {
+            height          : var(--height_input_search);
+            width           : 100%;
+            background-color: #fff;
+            border          : 1.5px solid #333;
+            border-radius   : 10px;
+
+            input {
+                height          : 100%;
+                width           : 100%;
+                background-color: transparent;
+                outline         : none;
+                border          : none;
+                padding         : 0 20px;
+                font-size       : 15px;
+            }
+
+            .search-icon-header {
+                position: absolute;
+                right   : 20px;
+                opacity : 0.4;
+                cursor  : pointer;
+
+                &:hover {
+                    color: var(--primary_color);
+                }
+            }
+        }
+
+        &.cart-header,
+        &.lang-header,
+        &.user-header {
+            font-weight: 700;
+            margin-top : 20px;
+
+            &:hover {
+                cursor : pointer;
+                opacity: 0.7;
+            }
+        }
+    }
+}
+
+@media (max-width: 575.98px) {
+    .header_mobile {
+        display: block;
+    }
+
+    header {
+        .header-wrapper {
+
+            .right-header-nav {
+                display: none !important;
+            }
+
+            .divider {
+                display: none;
+            }
+
+            .logo {
+                h1 {
+                    font-size: 30px;
+                }
+            }
+        }
+
+        .nav-wrapper {
+            display: none;
+        }
+    }
+}
