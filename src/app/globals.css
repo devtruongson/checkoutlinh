@@ -17,4 +17,6 @@ body {
 
 :root {
     --color_product_img: #E3E3E3;
+    --color_avatar     : #EBEBEB;
+    --bg_footer        : #E8E8E8;
 }

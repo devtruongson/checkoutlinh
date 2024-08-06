@@ -1,0 +1,54 @@
+.account_item {
+    background-color: #fff;
+    padding         : 10px 28px;
+    display         : flex;
+    flex-direction  : column;
+    align-items     : center;
+
+    .img_account {
+        width           : 144px;
+        height          : 144px;
+        display         : flex;
+        justify-content : center;
+        align-items     : center;
+        background-color: var(--color_avatar);
+        border-radius   : 50%;
+
+        img {
+            width     : 55px;
+            height    : 55px;
+            object-fit: contain;
+        }
+    }
+
+    .intro-account {
+        text-align: center;
+
+        h2 {
+            padding    : 10px 0;
+            font-weight: 600;
+            font-size  : 22px;
+            padding    : 0;
+            margin     : 0;
+        }
+
+        p {
+            padding      : 6px 0;
+            margin       : 6px 0;
+            border       : 1px solid #000;
+            border-radius: 9999999999999999999999999px;
+        }
+
+        .social_wrapper {
+            padding: 10px 0;
+        }
+
+        .shop_with_me {
+            border    : 1px solid #000;
+            color     : #fff;
+            background: #000;
+            padding   : 10px 20px;
+        }
+    }
+
+}

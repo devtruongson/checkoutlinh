@@ -1,0 +1,92 @@
+footer {
+    padding         : 50px 0;
+    background-color: var(--bg_footer);
+
+    .footer_top_wrapper {
+        display        : flex;
+        justify-content: space-between;
+
+        .footer_item {
+            max-width: 25%;
+
+            h2 {
+                font-size  : 32px;
+                font-weight: 700;
+            }
+
+            h3 {
+                font-size  : 20px;
+                font-weight: 600;
+            }
+
+            ul {
+                padding   : 0;
+                margin    : 0;
+                margin-top: 20px;
+
+                li {
+                    padding    : 10px 0;
+                    color      : #000;
+                    font-weight: 500;
+                    font-size  : 14px;
+
+                    &:hover {
+                        cursor: pointer;
+                        color : #ee4d2d;
+                    }
+
+                    &.input_sub {
+                        margin-top     : 20px;
+                        height         : 50px;
+                        border         : 1px solid #000;
+                        display        : flex;
+                        justify-content: space-between;
+                        align-items    : center;
+                        padding        : 0;
+
+                        input {
+                            background  : transparent;
+                            border      : none;
+                            outline     : none;
+                            height      : 100%;
+                            width       : 100%;
+                            padding-left: 10px;
+                            min-width   : 200px;
+                        }
+
+                        button {
+                            background: #000;
+                            border    : none;
+                            outline   : none;
+                            height    : 100%;
+                            width     : 100%;
+                            padding   : 0 10px;
+                            color     : #fff;
+                            max-width : 120px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.copy_right {
+    background: #fff;
+    height    : 90px;
+
+    .copy_right_child {
+        display        : flex;
+        justify-content: space-between;
+        align-items    : center;
+        padding        : 10px 0;
+        align-items    : center;
+        height         : 100%;
+
+        .payment {
+            display    : flex;
+            align-items: center;
+            gap        : 30px;
+        }
+    }
+}

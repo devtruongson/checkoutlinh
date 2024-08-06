@@ -6,6 +6,8 @@ import { v4 as uuidv4 } from 'uuid';
 import Image from 'next/image';
 import Link from 'next/link';
 import ProductList from '@/components/ProductList/ProductList';
+import SaleOff from '@/components/SaleOff/SaleOff';
+import Account from '@/components/Account/Account';
 
 const listItem = [
     {
@@ -80,7 +82,10 @@ export default function HomePage() {
                     />
                 </div>
             </div>
-            <div className="product_section py-10">
+            <div className="container mx-auto pt-6">
+                <SaleOff cateTitle="On All Items" percent={50} />
+            </div>
+            <div className="product_section py-6">
                 <div className="container mx-auto">
                     <h2 className="title_top_section">
                         NEW ARRIVALS
@@ -96,6 +101,29 @@ export default function HomePage() {
                             arrows: true,
                             slidesToScroll: 1,
                             autoplay: true,
+                        }}
+                    />
+                </div>
+            </div>
+            <div className="container mx-auto pt-6">
+                <SaleOff cateTitle="All SKINCARE Items" percent={35} />
+            </div>
+            <div className="product_section py-6">
+                <div className="container mx-auto">
+                    <h2 className="title_top_section">
+                        AMBASSADORS
+                        <Link href="/">VIEW ALL</Link>
+                    </h2>
+                    <Account
+                        countRenderAccount={20}
+                        isSide
+                        settings={{
+                            dots: false,
+                            slidesToShow: 4,
+                            speed: 1000,
+                            arrows: true,
+                            slidesToScroll: 1,
+                            autoplay: false,
                         }}
                     />
                 </div>
