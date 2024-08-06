@@ -173,7 +173,7 @@ export default function HomePage() {
                             speed: 1000,
                             arrows: true,
                             slidesToScroll: 1,
-                            autoplay: false,
+                            autoplay: true,
                             responsive: [
                                 {
                                     breakpoint: 1024,
