@@ -224,7 +224,7 @@ function CateComponent({ isContainer }: { isContainer: boolean }) {
     ]);
 
     return (
-        <div className="shadow-md">
+        <div className="shadow-md bg-[#fff]">
             <div className={isContainer ? 'container mx-auto' : ''}>
                 <nav className="nav-wrapper">
                     <ul>

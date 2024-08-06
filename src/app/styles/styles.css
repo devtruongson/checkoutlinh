@@ -85,6 +85,10 @@
     }
 }
 
+.children_layout {
+    margin-top: var(--height_header_wp);
+}
+
 @media (max-width: 575.98px) {
 
     .title_top_section {

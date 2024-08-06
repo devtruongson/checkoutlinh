@@ -187,12 +187,22 @@
     }
 }
 
+header {
+    position: fixed !important;
+    top     : 0;
+    left    : 0;
+    right   : 0;
+    z-index : 999;
+    height  : var(--height_header_wp);
+}
+
 @media (max-width: 575.98px) {
     .header_mobile {
         display: block;
     }
 
     header {
+
         .header-wrapper {
 
             .right-header-nav {
@@ -211,7 +221,9 @@
         }
 
         .nav-wrapper {
-            display: none;
+            overflow-x : auto;
+            white-space: nowrap;
+            gap        : 30px;
         }
     }
 }
