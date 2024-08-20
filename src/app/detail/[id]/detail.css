@@ -1,0 +1,37 @@
+.content-side {
+    display        : flex;
+    flex-wrap      : wrap;
+    justify-content: space-between;
+
+    .content-side-left {
+        width      : 60%;
+        flex-shrink: 0;
+        min-height : 100px;
+    }
+
+    @media (max-width: 575.98px) {
+        .content-side-left {
+            width        : 100%;
+            margin-bottom: 10px;
+
+            .image_list {
+                height: 200px;
+            }
+
+            .block_imgs {
+                max-height: 200px;
+                overflow  : auto;
+            }
+        }
+
+        .cart_list {
+            width: 1200px;
+        }
+    }
+
+    .content-side-right {
+        flex       : 1;
+        flex-shrink: 0;
+        min-height : 100px;
+    }
+}
