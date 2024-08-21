@@ -3,8 +3,17 @@ import './detail.css';
 import SideImageListDetail from '@/components/SideImageListDetail/SideImageListDetail';
 import ProductList from '@/components/ProductList/ProductList';
 import Link from 'next/link';
+import { ClassObject } from '@/utils/interface';
 
 export default async function Detail({ params }: { params: { id: string } }) {
+    const dataList: { data: ClassObject[] } = (await fetch(
+        'https://api-pro.teklearner.com/class/v1/get-list-class?class_code=&skip=0&limit=16000',
+    ).then((response) => response.json())) || { data: [] };
+
+    const dataDetail = dataList.data.find((item) => {
+        return item.id === params.id;
+    });
+
     return (
         <div className="container mx-auto pt-6">
             <div className="mb-6">
@@ -24,9 +33,13 @@ export default async function Detail({ params }: { params: { id: string } }) {
                     />
                     <div className="content-side-right">
                         <div className="p-4">
-                            <div className="text-sm font-bold">BRAND</div>
+                            <div className="text-sm font-bold">
+                                {dataDetail ? dataDetail.class_type : 'Đang Cập Nhật'}
+                            </div>
 
-                            <h1 className="text-2xl font-bold">Product Name Goes Here</h1>
+                            <h1 className="text-2xl font-bold">
+                                {dataDetail ? dataDetail.class_name : 'Đang Cập Nhật'}
+                            </h1>
 
                             <div className="text-sm text-gray-500 flex items-center">
                                 <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -36,20 +49,38 @@ export default async function Detail({ params }: { params: { id: string } }) {
                             </div>
 
                             <p className="text-sm text-gray-500 mt-2">
-                                Nisl, do fames, consequat adipiscing. Recusandae platea neque, cum, accusamus
+                                {dataDetail ? dataDetail.class_location : 'Đang Cập Nhật'}
                             </p>
 
                             <div className="flex items-center mt-2">
-                                <span className="line-through text-gray-400">AED 32.00</span>
-                                <span className="text-xl font-bold ml-2">AED 25.60</span>
+                                <span className="line-through text-gray-400">
+                                    {dataDetail
+                                        ? (dataDetail.course_price - dataDetail.course_discount).toLocaleString(
+                                              'it-IT',
+                                              {
+                                                  style: 'currency',
+                                                  currency: 'VND',
+                                              },
+                                          )
+                                        : 'AED 32.00'}
+                                </span>
+                                <span className="text-xl font-bold ml-2">
+                                    {' '}
+                                    {dataDetail
+                                        ? dataDetail.course_price.toLocaleString('it-IT', {
+                                              style: 'currency',
+                                              currency: 'VND',
+                                          })
+                                        : 'AED 32.00'}
+                                </span>
                                 <span className="bg-yellow-200 text-yellow-800 text-sm font-semibold ml-2 p-1 rounded">
                                     30% Off
                                 </span>
                             </div>
 
                             <p className="text-sm text-gray-500 mt-1">
-                                You can track the price of this product{' '}
-                                <span className="text-blue-600 cursor-pointer">Track Rate</span>
+                                {dataDetail ? dataDetail.normalized_class_name : 'Đang cập nhât'}
+                                <span className="text-blue-600 cursor-pointer ms-3">Track Rate</span>
                             </p>
 
                             <div className="flex space-x-4 mt-4">
@@ -67,12 +98,24 @@ export default async function Detail({ params }: { params: { id: string } }) {
                             </div>
 
                             <div className="grid grid-cols-3 gap-2 p-2 border mt-4">
-                                <div className="bg-gray-200 p-2 text-center">Lorem Ipsum</div>
-                                <div className="bg-gray-200 p-2 text-center">Lorem Ipsum Se</div>
-                                <div className="bg-gray-200 p-2 text-center">Lorem Ipsum</div>
-                                <div className="bg-gray-200 p-2 text-center">Lorem Ipsum</div>
-                                <div className="bg-gray-200 p-2 text-center">Lorem Ipsum Se</div>
-                                <div className="bg-gray-200 p-2 text-center">Lorem Ipsum</div>
+                                {dataDetail ? (
+                                    dataDetail.calendar_config.rank.map((item, index) => {
+                                        return (
+                                            <div key={index} className="bg-gray-200 p-2 text-center">
+                                                {item}
+                                            </div>
+                                        );
+                                    })
+                                ) : (
+                                    <>
+                                        <div className="bg-gray-200 p-2 text-center">Lorem Ipsum</div>
+                                        <div className="bg-gray-200 p-2 text-center">Lorem Ipsum Se</div>
+                                        <div className="bg-gray-200 p-2 text-center">Lorem Ipsum</div>
+                                        <div className="bg-gray-200 p-2 text-center">Lorem Ipsum</div>
+                                        <div className="bg-gray-200 p-2 text-center">Lorem Ipsum Se</div>
+                                        <div className="bg-gray-200 p-2 text-center">Lorem Ipsum</div>
+                                    </>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -274,6 +317,7 @@ export default async function Detail({ params }: { params: { id: string } }) {
                     <div className="container mx-auto">
                         <h2 className="title_top_section">RELATED PRODUCTS</h2>
                         <ProductList
+                            dataList={dataList.data}
                             countRenderProduct={10}
                             isSide
                             settings={{

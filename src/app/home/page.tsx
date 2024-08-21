@@ -36,7 +36,11 @@ const listItem = [
     },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+    const dataList: { data: any[] } = await fetch(
+        'https://api-pro.teklearner.com/class/v1/get-list-class?class_code=&skip=0&limit=16000',
+    ).then((response) => response.json());
+
     return (
         <div className="max-w-[100vw] overflow-x-hidden home-page-wrapper">
             <SideWrapper
@@ -61,7 +65,7 @@ export default function HomePage() {
                         );
                     })}
             </SideWrapper>
-            <ShowNow />
+            <ShowNow dataList={dataList.data} />
             <div className="product_section py-10">
                 <div className="container mx-auto">
                     <h2 className="title_top_section">
@@ -69,6 +73,7 @@ export default function HomePage() {
                         <Link href="/">SEE ALL</Link>
                     </h2>
                     <ProductList
+                        dataList={dataList.data}
                         countRenderProduct={10}
                         isSide
                         settings={{
@@ -117,6 +122,7 @@ export default function HomePage() {
                         <Link href="/">SEE ALL</Link>
                     </h2>
                     <ProductList
+                        dataList={dataList.data}
                         countRenderProduct={10}
                         isSide
                         settings={{
