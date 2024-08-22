@@ -8,11 +8,16 @@ import { ClassObject } from '@/utils/interface';
 export default async function Detail({ params }: { params: { id: string } }) {
     const dataList: { data: ClassObject[] } = (await fetch(
         'https://api-pro.teklearner.com/class/v1/get-list-class?class_code=&skip=0&limit=16000',
+        {
+            cache: 'no-cache',
+        },
     ).then((response) => response.json())) || { data: [] };
-
-    const dataDetail = dataList.data.find((item) => {
-        return item.id === params.id;
-    });
+    const dataDetail: { data: any } = (await fetch(
+        `https://api-pro.teklearner.com/class/v1/class-detail?id=${params.id}`,
+        {
+            cache: 'no-cache',
+        },
+    ).then((response) => response.json())) || { data: {} };
 
     return (
         <div className="container mx-auto pt-6">
@@ -34,11 +39,11 @@ export default async function Detail({ params }: { params: { id: string } }) {
                     <div className="content-side-right">
                         <div className="p-4">
                             <div className="text-sm font-bold">
-                                {dataDetail ? dataDetail.class_type : 'Đang Cập Nhật'}
+                                {dataDetail?.data ? dataDetail?.data.class_type : 'Đang Cập Nhật'}
                             </div>
 
                             <h1 className="text-2xl font-bold">
-                                {dataDetail ? dataDetail.class_name : 'Đang Cập Nhật'}
+                                {dataDetail?.data ? dataDetail?.data.class_name : 'Đang Cập Nhật'}
                             </h1>
 
                             <div className="text-sm text-gray-500 flex items-center">
@@ -49,25 +54,25 @@ export default async function Detail({ params }: { params: { id: string } }) {
                             </div>
 
                             <p className="text-sm text-gray-500 mt-2">
-                                {dataDetail ? dataDetail.class_location : 'Đang Cập Nhật'}
+                                {dataDetail?.data ? dataDetail?.data.class_location : 'Đang Cập Nhật'}
                             </p>
 
                             <div className="flex items-center mt-2">
                                 <span className="line-through text-gray-400">
-                                    {dataDetail
-                                        ? (dataDetail.course_price - dataDetail.course_discount).toLocaleString(
-                                              'it-IT',
-                                              {
-                                                  style: 'currency',
-                                                  currency: 'VND',
-                                              },
-                                          )
+                                    {dataDetail?.data
+                                        ? (
+                                              dataDetail?.data?.course?.course_price -
+                                              dataDetail?.data?.course?.course_discount
+                                          ).toLocaleString('it-IT', {
+                                              style: 'currency',
+                                              currency: 'VND',
+                                          })
                                         : 'AED 32.00'}
                                 </span>
                                 <span className="text-xl font-bold ml-2">
                                     {' '}
-                                    {dataDetail
-                                        ? dataDetail.course_price.toLocaleString('it-IT', {
+                                    {dataDetail?.data
+                                        ? dataDetail?.data?.course?.course_price.toLocaleString('it-IT', {
                                               style: 'currency',
                                               currency: 'VND',
                                           })
@@ -79,7 +84,7 @@ export default async function Detail({ params }: { params: { id: string } }) {
                             </div>
 
                             <p className="text-sm text-gray-500 mt-1">
-                                {dataDetail ? dataDetail.normalized_class_name : 'Đang cập nhât'}
+                                {dataDetail?.data ? dataDetail?.data.normalized_class_name : 'Đang cập nhât'}
                                 <span className="text-blue-600 cursor-pointer ms-3">Track Rate</span>
                             </p>
 
@@ -88,18 +93,56 @@ export default async function Detail({ params }: { params: { id: string } }) {
                                 <button className="bg-black text-white px-4 py-2 font-semibold">BUY NOW</button>
                             </div>
 
-                            <div className="mt-4 text-sm text-gray-500">
-                                <span className="flex items-center cursor-pointer">
-                                    <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 16.343l-6.828-6.828a4 4 0 010-5.656z" />
-                                    </svg>
-                                    View My Favourite List
-                                </span>
+                            <div className="mt-5 text-sm text-gray-500 flex gap-4 items-center">
+                                <div>
+                                    <span className="flex items-center cursor-pointer">
+                                        <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 16.343l-6.828-6.828a4 4 0 010-5.656z" />
+                                        </svg>
+                                        View My Favourite List
+                                    </span>
+                                    <span className="flex items-center cursor-pointer">
+                                        Số lượng sinh viên{' '}
+                                        {dataDetail?.data ? dataDetail?.data.number_student : 'Đang cập nhât'}
+                                    </span>
+                                    <span className="flex items-center cursor-pointer">
+                                        Ngày bắt đầu {dataDetail?.data ? dataDetail?.data.start_date : 'Đang cập nhât'}
+                                    </span>
+                                    <span className="flex items-center cursor-pointer">
+                                        Ngày kết thúc {dataDetail?.data ? dataDetail?.data.end_date : 'Đang cập nhât'}
+                                    </span>
+                                    <span className="flex items-center cursor-pointer">
+                                        Giáo viên{' '}
+                                        {dataDetail?.data ? dataDetail?.data?.teachers?.email : 'Đang cập nhât'}
+                                    </span>
+                                    <span className="flex items-center cursor-pointer">
+                                        ClassCode {dataDetail?.data ? dataDetail?.data?.class_code : 'Đang cập nhât'}
+                                    </span>
+                                </div>
+                                <div>
+                                    <h4 className="font-[600] text-[30px] text-[#333] mb-4">Campus</h4>
+                                    <span className="flex items-center cursor-pointer">
+                                        Trạng thái{' '}
+                                        {dataDetail?.data ? dataDetail?.data?.campus?.campus_status : 'Đang cập nhât'}
+                                    </span>
+                                    <span className="flex items-center cursor-pointer">
+                                        Code{' '}
+                                        {dataDetail?.data ? dataDetail?.data?.campus?.campus_code : 'Đang cập nhât'}
+                                    </span>
+                                    <span className="flex items-center cursor-pointer">
+                                        Name{' '}
+                                        {dataDetail?.data ? dataDetail?.data?.campus?.campus_name : 'Đang cập nhât'}
+                                    </span>
+                                    <span className="flex items-center cursor-pointer">
+                                        Name{' '}
+                                        {dataDetail?.data ? dataDetail?.data?.campus?.campus_address : 'Đang cập nhât'}
+                                    </span>
+                                </div>
                             </div>
 
                             <div className="grid grid-cols-3 gap-2 p-2 border mt-4">
-                                {dataDetail ? (
-                                    dataDetail.calendar_config.rank.map((item, index) => {
+                                {dataDetail?.data ? (
+                                    dataDetail?.data.calendar_config.rank.map((item: string, index: number) => {
                                         return (
                                             <div key={index} className="bg-gray-200 p-2 text-center">
                                                 {item}
