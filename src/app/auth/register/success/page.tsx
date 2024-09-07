@@ -1,11 +1,10 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 
 function Success() {
     const params = useSearchParams();
-
     const error = params.get('error');
 
     useEffect(() => {
@@ -21,4 +20,10 @@ function Success() {
     );
 }
 
-export default Success;
+export default function SuspenseWrapper() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <Success />
+        </Suspense>
+    );
+}

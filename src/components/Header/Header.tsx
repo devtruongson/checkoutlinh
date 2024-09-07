@@ -10,9 +10,17 @@ import Tippy from '@tippyjs/react/headless';
 
 export default function Header() {
     const [isOpenHeaderMobile, setIsOpenHeaderMobile] = useState<boolean>(false);
-    const dataLogin = JSON.parse(localStorage.getItem('dataLogin') || 'null');
+    const [dataLogin, setDataLogin] = useState<any>(null);
 
-    console.log(dataLogin);
+    useEffect(() => {
+        const data = JSON.parse(window.localStorage.getItem('dataLogin') || 'null');
+        setDataLogin(data);
+    }, []);
+
+    const handleClickLogout = () => {
+        localStorage.clear();
+        window.location.href = '/';
+    };
 
     return (
         <header className="z-[999] relative">
@@ -67,14 +75,7 @@ export default function Header() {
                                     render={(attrs) => (
                                         <div {...attrs}>
                                             <div className=" rounded-md px-4 py-5 bg-[#fff] shadow-md">
-                                                <button
-                                                    onClick={() => {
-                                                        localStorage.clear();
-                                                        window.location.href = '/';
-                                                    }}
-                                                >
-                                                    Logout
-                                                </button>
+                                                <button onClick={handleClickLogout}>Logout</button>
                                             </div>
                                         </div>
                                     )}
