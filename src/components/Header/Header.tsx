@@ -5,9 +5,14 @@ import React, { useEffect, useId, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { ICateHeader } from '@/utils/interface';
 import './Header.css';
+import Login from '../auth/Login/Login';
+import Tippy from '@tippyjs/react/headless';
 
 export default function Header() {
     const [isOpenHeaderMobile, setIsOpenHeaderMobile] = useState<boolean>(false);
+    const dataLogin = JSON.parse(localStorage.getItem('dataLogin') || 'null');
+
+    console.log(dataLogin);
 
     return (
         <header className="z-[999] relative">
@@ -54,23 +59,82 @@ export default function Header() {
                             <span>Cart</span>
                         </div>
                         <div className="divider"></div>
-                        <div className="right-header-nav--item user-header">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
-                                className="size-6"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                                />
-                            </svg>
-                            <span>User</span>
-                        </div>
+                        {dataLogin ? (
+                            <div>
+                                <Tippy
+                                    trigger="click"
+                                    placement="bottom"
+                                    render={(attrs) => (
+                                        <div {...attrs}>
+                                            <div className=" rounded-md px-4 py-5 bg-[#fff] shadow-md">
+                                                <button
+                                                    onClick={() => {
+                                                        localStorage.clear();
+                                                        window.location.href = '/';
+                                                    }}
+                                                >
+                                                    Logout
+                                                </button>
+                                            </div>
+                                        </div>
+                                    )}
+                                    interactive
+                                >
+                                    <div className="right-header-nav--item user-header">
+                                        <>
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                strokeWidth={1.5}
+                                                stroke="currentColor"
+                                                className="size-6"
+                                            >
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                                                />
+                                            </svg>
+                                            <span>{dataLogin.user.name}</span>
+                                        </>
+                                    </div>
+                                </Tippy>
+                            </div>
+                        ) : (
+                            <div>
+                                <Tippy
+                                    trigger="click"
+                                    render={(attrs) => (
+                                        <div {...attrs}>
+                                            <Login />
+                                        </div>
+                                    )}
+                                    interactive
+                                >
+                                    <div className="right-header-nav--item user-header">
+                                        <>
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                strokeWidth={1.5}
+                                                stroke="currentColor"
+                                                className="size-6"
+                                            >
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                                                />
+                                            </svg>
+                                            <span>User</span>
+                                        </>
+                                    </div>
+                                </Tippy>
+                            </div>
+                        )}
+
                         <div className="divider"></div>
                         <div className="right-header-nav--item lang-header">عربى</div>
                     </div>
