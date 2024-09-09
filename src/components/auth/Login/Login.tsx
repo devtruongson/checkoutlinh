@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-function Login() {
+function Login({ classname }: { classname: string }) {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
 
@@ -44,7 +44,7 @@ function Login() {
     };
 
     return (
-        <div className="bg-[#fff] shadow-md px-10 py-8 w-[20vw] min-h-[60vh] rounded-[20px] overflow-hidden">
+        <div className={classname}>
             <h2 className="text-center font-bold">SIGN IN</h2>
             <div className="mt-4">
                 <div className="mb-4">

@@ -32,18 +32,16 @@ export async function checkParam(data: { type: 'email' | 'phone'; value: string;
     return res;
 }
 
-export async function formRegister(formData: FormData) {
-    const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        password: formData.get('password'),
-        phone: formData.get('phone'),
-        birthday: formData.get('birthday'),
-        address: formData.get('street') + ' - ' + formData.get('area') + ' - ' + formData.get('emirate'),
-        gender: formData.get('gender'),
-        otp: formData.get('otp'),
-    };
-
+export async function formRegister(data: {
+    name: string;
+    email: string;
+    password: string;
+    phone: string;
+    birthday: string;
+    address: string;
+    gender: string;
+    otp: string;
+}) {
     const url = 'https://api-pro.teklearner.com/auth/v1/register';
 
     const res = await fetch(url, {
@@ -55,6 +53,5 @@ export async function formRegister(formData: FormData) {
         body: JSON.stringify(data),
     }).then((res) => res.json());
 
-    const urlRedirect = `/auth/register/success?error=${encodeURIComponent(res?.error || '')}`;
-    redirect(urlRedirect);
+    return res;
 }
