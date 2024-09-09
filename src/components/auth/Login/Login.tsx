@@ -110,9 +110,9 @@ function Login({ classname }: { classname: string }) {
                 </div>
                 <p className="text-[12px] text-center block font-[600] pt-4">
                     New Member?{' '}
-                    <Link href="/auth/register" className="underline">
+                    <a href="/auth/register" className="underline">
                         Register Now
-                    </Link>
+                    </a>
                 </p>
             </div>
         </div>
