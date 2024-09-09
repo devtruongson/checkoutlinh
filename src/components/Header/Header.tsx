@@ -221,6 +221,7 @@ export default function Header() {
                                                     <Login classname="bg-[#fff] shadow-md px-10 py-8 w-[100vw] min-h-[60vh] rounded-[20px] overflow-hidden" />
                                                 </div>
                                             )}
+                                            placement="bottom"
                                             interactive
                                         >
                                             <div className="right-header-nav--item user-header">
