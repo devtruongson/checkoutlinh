@@ -1,9 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import Swal from 'sweetalert2';
 
-function Login({ classname }: { classname: string }) {
+function Login({
+    classname,
+    setLoading,
+}: {
+    classname: string;
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
 
@@ -14,6 +21,7 @@ function Login({ classname }: { classname: string }) {
         }
 
         try {
+            setLoading(true);
             const res: any = await fetch('https://api-pro.teklearner.com/auth/v1/login', {
                 method: 'POST',
                 headers: {
@@ -39,7 +47,13 @@ function Login({ classname }: { classname: string }) {
             localStorage.setItem('dataLogin', JSON.stringify(response));
             window.location.href = '/';
         } catch (error: any) {
-            alert('Vui lòng kiểm tra lại username & password của bạn');
+            Swal.fire({
+                title: 'Có lỗi xảy ra?',
+                text: 'Vui lòng kiểm tra lại username & password của bạn',
+                icon: 'error',
+            });
+        } finally {
+            setLoading(false);
         }
     };
 

@@ -1,16 +1,16 @@
 :root {
-    --height_input_search      : 50px;
+    --height_input_search: 50px;
     --min_width_input_search_pc: 442px;
-    --primary_color            : #ee4d2d;
-    --height_header            : 80px;
-    --height_nav_wrapper       : 50px;
+    --primary_color: #ee4d2d;
+    --height_header: 80px;
+    --height_nav_wrapper: 50px;
 }
 
 .header-wrapper {
-    display        : flex;
+    display: flex;
     justify-content: space-between;
-    align-items    : center;
-    height         : var(--height_header);
+    align-items: center;
+    height: var(--height_header);
 
     .logo {
 
@@ -19,45 +19,45 @@
 
             h1 {
                 font-weight: 700;
-                font-size  : 30px;
-                cursor     : pointer;
+                font-size: 30px;
+                cursor: pointer;
             }
         }
     }
 
     .right-header-nav {
-        display    : flex;
+        display: flex;
         align-items: center;
-        gap        : 20px;
+        gap: 20px;
 
         .right-header-nav--item {
-            display    : flex;
+            display: flex;
             align-items: center;
-            gap        : 10px;
-            position   : relative;
+            gap: 10px;
+            position: relative;
 
             &.search-wrapper-header-input {
-                height          : var(--height_input_search);
-                width           : var(--min_width_input_search_pc);
+                height: var(--height_input_search);
+                width: var(--min_width_input_search_pc);
                 background-color: #fff;
-                border          : 1.5px solid #333;
-                border-radius   : 10px;
+                border: 1.5px solid #333;
+                border-radius: 10px;
 
                 input {
-                    height          : 100%;
-                    width           : 100%;
+                    height: 100%;
+                    width: 100%;
                     background-color: transparent;
-                    outline         : none;
-                    border          : none;
-                    padding         : 0 20px;
-                    font-size       : 15px;
+                    outline: none;
+                    border: none;
+                    padding: 0 20px;
+                    font-size: 15px;
                 }
 
                 .search-icon-header {
                     position: absolute;
-                    right   : 20px;
-                    opacity : 0.4;
-                    cursor  : pointer;
+                    right: 20px;
+                    opacity: 0.4;
+                    cursor: pointer;
 
                     &:hover {
                         color: var(--primary_color);
@@ -71,7 +71,7 @@
                 font-weight: 700;
 
                 &:hover {
-                    cursor : pointer;
+                    cursor: pointer;
                     opacity: 0.7;
                 }
             }
@@ -80,27 +80,27 @@
 }
 
 .nav-wrapper {
-    display        : flex;
+    display: flex;
     justify-content: space-between;
-    height         : var(--height_nav_wrapper);
-    align-items    : center;
+    height: var(--height_nav_wrapper);
+    align-items: center;
 
     ul {
-        display    : flex;
+        display: flex;
         align-items: center;
-        flex       : 1;
-        gap        : 40px;
+        flex: 1;
+        gap: 40px;
 
         li {
 
             a {
-                display        : flex;
+                display: flex;
                 justify-content: center;
-                align-items    : center;
+                align-items: center;
                 text-decoration: none;
-                font-size      : 14px;
-                font-weight    : 600;
-                gap            : 10px;
+                font-size: 14px;
+                font-weight: 600;
+                gap: 10px;
 
                 &:hover {
                     color: var(--primary_color);
@@ -110,14 +110,14 @@
     }
 
     button {
-        height          : 100%;
-        padding         : 0 20px;
+        height: 100%;
+        padding: 0 20px;
         background-color: #222;
-        color           : #fff;
-        display         : flex;
-        justify-content : center;
-        align-items     : center;
-        font-weight     : 600;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 600;
     }
 }
 
@@ -129,43 +129,43 @@
     display: none;
 
     &.active {
-        position        : fixed;
-        display         : block;
-        z-index         : 9999;
-        left            : 0;
-        right           : 0;
+        position: fixed;
+        display: block;
+        z-index: 9999;
+        left: 0;
+        right: 0;
         background-color: #fff;
-        padding         : 20px 20px;
+        padding: 20px 20px;
     }
 
     .right-header-nav--item {
-        display    : flex;
+        display: flex;
         align-items: center;
-        gap        : 10px;
-        position   : relative;
+        gap: 10px;
+        position: relative;
 
         &.search-wrapper-header-input {
-            height          : var(--height_input_search);
-            width           : 100%;
+            height: var(--height_input_search);
+            width: 100%;
             background-color: #fff;
-            border          : 1.5px solid #333;
-            border-radius   : 10px;
+            border: 1.5px solid #333;
+            border-radius: 10px;
 
             input {
-                height          : 100%;
-                width           : 100%;
+                height: 100%;
+                width: 100%;
                 background-color: transparent;
-                outline         : none;
-                border          : none;
-                padding         : 0 20px;
-                font-size       : 15px;
+                outline: none;
+                border: none;
+                padding: 0 20px;
+                font-size: 15px;
             }
 
             .search-icon-header {
                 position: absolute;
-                right   : 20px;
-                opacity : 0.4;
-                cursor  : pointer;
+                right: 20px;
+                opacity: 0.4;
+                cursor: pointer;
 
                 &:hover {
                     color: var(--primary_color);
@@ -177,10 +177,10 @@
         &.lang-header,
         &.user-header {
             font-weight: 700;
-            margin-top : 20px;
+            margin-top: 20px;
 
             &:hover {
-                cursor : pointer;
+                cursor: pointer;
                 opacity: 0.7;
             }
         }
@@ -189,11 +189,11 @@
 
 header {
     position: fixed !important;
-    top     : 0;
-    left    : 0;
-    right   : 0;
-    z-index : 999;
-    height  : var(--height_header_wp);
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    height: var(--height_header_wp);
 }
 
 @media (max-width: 575.98px) {
@@ -221,9 +221,75 @@ header {
         }
 
         .nav-wrapper {
-            overflow-x : auto;
+            overflow-x: auto;
             white-space: nowrap;
-            gap        : 30px;
+            gap: 30px;
+        }
+    }
+}
+
+
+@media (max-width: 991.98px) {
+    .header_mobile {
+        display: block;
+    }
+
+    header {
+
+        .header-wrapper {
+
+            .right-header-nav {
+                display: none !important;
+            }
+
+            .divider {
+                display: none;
+            }
+
+            .logo {
+                h1 {
+                    font-size: 30px;
+                }
+            }
+        }
+
+        .nav-wrapper {
+            overflow-x: auto;
+            white-space: nowrap;
+            gap: 30px;
+        }
+    }
+}
+
+
+@media (max-width: 767.98px) {
+    .header_mobile {
+        display: block;
+    }
+
+    header {
+
+        .header-wrapper {
+
+            .right-header-nav {
+                display: none !important;
+            }
+
+            .divider {
+                display: none;
+            }
+
+            .logo {
+                h1 {
+                    font-size: 30px;
+                }
+            }
+        }
+
+        .nav-wrapper {
+            overflow-x: auto;
+            white-space: nowrap;
+            gap: 30px;
         }
     }
 }

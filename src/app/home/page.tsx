@@ -94,6 +94,15 @@ export default async function HomePage() {
                                     },
                                 },
                                 {
+                                    breakpoint: 992,
+                                    settings: {
+                                        slidesToShow: 2,
+                                        slidesToScroll: 1,
+                                        infinite: true,
+                                        dots: false,
+                                    },
+                                },
+                                {
                                     breakpoint: 600,
                                     settings: {
                                         slidesToShow: 2,
@@ -143,6 +152,15 @@ export default async function HomePage() {
                                     },
                                 },
                                 {
+                                    breakpoint: 992,
+                                    settings: {
+                                        slidesToShow: 2,
+                                        slidesToScroll: 1,
+                                        infinite: true,
+                                        dots: false,
+                                    },
+                                },
+                                {
                                     breakpoint: 600,
                                     settings: {
                                         slidesToShow: 2,
@@ -188,6 +206,15 @@ export default async function HomePage() {
                                         slidesToScroll: 1,
                                         infinite: true,
                                         dots: true,
+                                    },
+                                },
+                                {
+                                    breakpoint: 992,
+                                    settings: {
+                                        slidesToShow: 2,
+                                        slidesToScroll: 1,
+                                        infinite: true,
+                                        dots: false,
                                     },
                                 },
                                 {

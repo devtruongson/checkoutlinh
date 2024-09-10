@@ -2,7 +2,7 @@
 
 import { checkParam, formRegister } from '@/actions/action';
 import ReactLoading from 'react-loading';
-import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FormEvent, useRef, useState } from 'react';
 import Swal from 'sweetalert2';
 
 function Register() {
